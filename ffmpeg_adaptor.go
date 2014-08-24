@@ -1,26 +1,26 @@
 package ffmpeg
 
 import (
-  "github.com/hybridgroup/gobot"
+	"github.com/hybridgroup/gobot"
 )
 
 type FfmpegAdaptor struct {
-  gobot.Adaptor
+	gobot.Adaptor
 }
 
 func NewFfmpegAdaptor(name string) *FfmpegAdaptor {
-  return &FfmpegAdaptor{
-    Adaptor: *gobot.NewAdaptor(
-      name,
-      "ffmpeg.FfmpegAdaptor",
-    ),
-  }
+	return &FfmpegAdaptor{
+		Adaptor: *gobot.NewAdaptor(
+			name,
+			"ffmpeg.FfmpegAdaptor",
+		),
+	}
 }
 
 func (f *FfmpegAdaptor) Connect() bool {
-  return true
+	return true
 }
 
 func (f *FfmpegAdaptor) Finalize() bool {
-  return true
+	return true
 }
