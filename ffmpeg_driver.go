@@ -27,3 +27,19 @@ func (f *FfmpegDriver) adaptor() *FfmpegAdaptor {
 
 func (f *FfmpegDriver) Start() bool { return true }
 func (f *FfmpegDriver) Halt() bool  { return true }
+
+func (s *FfmpegDriver) StartServer(args []string) (err error) {
+	return startServer(args)
+}
+
+func (s *FfmpegDriver) StartStreamer(args []string) (err error) {
+	return startStreamer(args)
+}
+
+func (s *FfmpegDriver) StopServer() (err error) {
+	return stopServer()
+}
+
+func (s *FfmpegDriver) StopStreamer() (err error) {
+	return stopStreamer()
+}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot/api"
@@ -22,6 +23,34 @@ func main() {
 			[]gobot.Device{ffmpegDriver},
 			func() {
 				fmt.Println("work")
+
+				if err := ffmpegDriver.StartStreamer(nil); err != nil {
+					fmt.Println(err)
+					return
+				}
+
+				time.Sleep(5 * time.Second)
+
+				if err := ffmpegDriver.StartServer(nil); err != nil {
+					fmt.Println(err)
+					return
+				}
+
+				fmt.Println("Media Streaming...")
+
+				time.Sleep(60 * time.Second)
+
+				if err := ffmpegDriver.StopStreamer(); err != nil {
+					fmt.Println(err)
+					return
+				}
+
+				if err := ffmpegDriver.StopServer(); err != nil {
+					fmt.Println(err)
+					return
+				}
+
+				fmt.Println("Done!")
 			}))
 
 	master.Start()
